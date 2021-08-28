@@ -75,7 +75,6 @@ try:
                     continue
                 # 选课按钮
                 course_btn = item.find_element_by_tag_name('button')
-                print(course_btn)
                 course_btn.click()
                 try:
                     close_btn = driver.find_element_by_id('btn_ok')
