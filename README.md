@@ -34,7 +34,7 @@
 | [**ChromeDriver 89.0.4389.23**](https://chromedriver.storage.googleapis.com/index.html?path=89.0.4389.23/) | [**ChromeDriver 88.0.4324.96**](https://chromedriver.storage.googleapis.com/index.html?path=88.0.4324.96/) | [**ChromeDriver 88.0.4324.27**](https://chromedriver.storage.googleapis.com/index.html?path=88.0.4324.27/) |
 | [**ChromeDriver 87.0.4280.88**](https://chromedriver.storage.googleapis.com/index.html?path=87.0.4280.88/) | [**ChromeDriver 87.0.4280.20**](https://chromedriver.storage.googleapis.com/index.html?path=87.0.4280.20/) | [**ChromeDriver 86.0.4240.22**](https://chromedriver.storage.googleapis.com/index.html?path=86.0.4240.22/) |
 
-  更多版本请访问(可能需要梯子)：https://sites.google.com/chromium.org/driver/downloads
+  更多版本请访问：http://npm.taobao.org/mirrors/chromedriver/
 
 ## 脚本配置
 
