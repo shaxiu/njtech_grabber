@@ -9,7 +9,7 @@
 
 ## 效果图
 
-![result](.images/result.gif)
+![result](./images/result.gif)
 
 ## 环境配置
 
