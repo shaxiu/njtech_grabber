@@ -1,7 +1,7 @@
 import utils
 def courseList(keyW):
     print('正在进行课程查询...')
-    CourseList=utils.getCourseList(keyW).get('tmpList')
+    CourseList=User.getCourseList(keyW).get('tmpList')
     # print(CourseList)
     i=0
     for item in CourseList:
@@ -12,9 +12,12 @@ def courseList(keyW):
         i=i+1
     print('---------------------------------------------------')
 if __name__ == '__main__':
+    User=utils.User()
     print('''
     *********************************
     欢迎使用【南工抢课小助手】
+    Made By coderxiu
+    Github:https://github.com/shaxiu/njtech_grabber
     功能代码如下:
     ---------------------
     1.【xk】选课
@@ -37,12 +40,12 @@ if __name__ == '__main__':
                     ifChoose=input("确认选择课程 "+kch_ids[toChooseId]['name']+"? (Y/n,默认Y):")
                     if(ifChoose!='n'):
                         kch_id=kch_ids[toChooseId]['id']
-                        Detail=utils.getCourseDetail(kch_id)
+                        Detail=User.getCourseDetail(kch_id)
                         if Detail=='0':
                             print('课程具体获取失败！')
                         else:
                             jxb_ids=Detail[0]['do_jxb_id']
-                            res=utils.chooseCourse(jxb_ids,kch_id)
+                            res=User.chooseCourse(jxb_ids,kch_id)
                             if res['flag']=='1':
                                 print("选课成功！")
                             else:
@@ -51,7 +54,7 @@ if __name__ == '__main__':
                 print('未找到课程/该课程名额已满')
         elif code=='yxkc':
             print('正在进行已选课程查询...')
-            choosedList=utils.getChoosedList()
+            choosedList=User.getChoosedList()
             i=1
             for item in choosedList:
                 print('---------------------------------------------------')
@@ -61,7 +64,7 @@ if __name__ == '__main__':
         elif code=='tk':
             kch_ids=[]
             print('正在进行已选课程查询...')
-            choosedList=utils.getChoosedList()
+            choosedList=User.getChoosedList()
             i=0
             for item in choosedList:
                 print('---------------------------------------------------')
@@ -75,12 +78,12 @@ if __name__ == '__main__':
                     ifChoose=input("确认退选课程 "+kch_ids[toQuitId]['name']+"? (yes/N,默认N):")
                     if(ifChoose=='yes'):
                         kch_id=kch_ids[toQuitId]['id']
-                        Detail=utils.getCourseDetail(kch_id)
+                        Detail=User.getCourseDetail(kch_id)
                         if Detail=='0':
                             print('课程具体获取失败！')
                         else:
                             jxb_ids=Detail[0]['do_jxb_id']
-                            res=utils.quitCourse(jxb_ids)
+                            res=User.quitCourse(jxb_ids)
                             if res=='1':
                                 print('退课成功')
                             else:
