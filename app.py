@@ -1,3 +1,4 @@
+from csv import excel
 import utils
 def courseList(keyW):
     print('正在进行课程查询...')
@@ -12,7 +13,10 @@ def courseList(keyW):
         i=i+1
     print('---------------------------------------------------')
 if __name__ == '__main__':
-    User=utils.User()
+    try:
+        User=utils.User()
+    except:
+        input()
     print('''
     *********************************
     欢迎使用【南工抢课小助手】

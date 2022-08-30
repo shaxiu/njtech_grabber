@@ -23,26 +23,24 @@ res=requests.get(base_url+'/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layo
 res.encoding = 'utf-8'                                              #改变编码格式
 web_content=res.text                                                #获得网页内容
 soup = bs4.BeautifulSoup(web_content,'lxml')                 
-
-xkkz_id=soup.find(id='firstXkkzId').get("value")
-xkxqm=soup.find(id='xkxqm').get("value")
-xkxnm=soup.find(id='xkxnm').get("value")
-njdm_id=soup.find(id='njdm_id').get("value")
-zyh_id=soup.find(id='zyh_id').get("value")
-kklxdm=soup.find(id='firstKklxdm').get("value")
-xsbj=soup.find(id='xsbj').get("xsbj")
 # print(xkkz_id,xkxqm,xkxnm,njdm_id,zyh_id,kklxdm,xsbj)
+
+def getHtmlconfig(soup,parameterName):
+    try:
+        return soup.find(id=parameterName).get("value")
+    except:
+        return 1
 
 class User(object):
     def __init__(self):
         Ck=cookie_str
-        self.kklxdm=cf.get("baseConfig","kklxdm") if cf.get("baseConfig","kklxdm")!='null' else kklxdm
-        self.xkxnm=cf.get("baseConfig","xkxnm") if cf.get("baseConfig","xkxnm")!='null' else xkxnm
-        self.xkxqm=cf.get("baseConfig","xkxqm") if cf.get("baseConfig","xkxqm")!='null' else xkxqm
-        self.njdm_id=cf.get("baseConfig","njdm_id") if cf.get("baseConfig","njdm_id")!='null' else njdm_id
-        self.zyh_id=cf.get("baseConfig","zyh_id") if cf.get("baseConfig","zyh_id")!='null' else zyh_id
-        self.xkkz_id = (cf.get("baseConfig", "xkkz_id") if cf.get("baseConfig","xkkz_id")!='null' else xkkz_id)
-        self.xsbj=xsbj
+        self.kklxdm=cf.get("baseConfig","kklxdm") if cf.get("baseConfig","kklxdm")!='null' else getHtmlconfig(soup,'firstKklxdm')
+        self.xkxnm=cf.get("baseConfig","xkxnm") if cf.get("baseConfig","xkxnm")!='null' else getHtmlconfig(soup,'xkxnm')
+        self.xkxqm=cf.get("baseConfig","xkxqm") if cf.get("baseConfig","xkxqm")!='null' else getHtmlconfig(soup,'xkxqm')
+        self.njdm_id=cf.get("baseConfig","njdm_id") if cf.get("baseConfig","njdm_id")!='null' else getHtmlconfig(soup,'njdm_id')
+        self.zyh_id=cf.get("baseConfig","zyh_id") if cf.get("baseConfig","zyh_id")!='null' else getHtmlconfig(soup,'zyh_id')
+        self.xkkz_id = cf.get("baseConfig", "xkkz_id") if cf.get("baseConfig","xkkz_id")!='null' else getHtmlconfig(soup,'firstXkkzId')
+        self.xsbj=cf.get("baseConfig", "xsbj") if cf.get("baseConfig","xsbj")!='null' else getHtmlconfig(soup,'xsbj')
         self.header = {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0',
